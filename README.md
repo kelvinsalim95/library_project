@@ -2,7 +2,7 @@
 
 # Prerequisite
 
-Python 3.9 \n
+Python 3.9 <br />
 Docker 
 
 To run this project just run docker-compose up -> it will start local database for you <br />
