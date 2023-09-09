@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "24f2a481-d7d8-4a0a-928e-1c9577a01120",
+		"name": "library_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create_user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCOUNT_USERNAME",
+								"value": "admin",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"test10\",\n    \"type\": \"librarian\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/user",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "create_book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"test2\",\n    \"type\":\"librarian\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/create_user",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"create_user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "test2",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"test2\",\n    \"type\":\"librarian\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/book",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"book"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "borrowedBook",
+			"item": [
+				{
+					"name": "Create Borrowed Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "test10",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book\":\"book1\",\n    \"user_mapper\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check book without username",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "test10",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"book1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Renew Borrowed Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "username",
+								"value": "test2",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":5,\n    \"is_renew\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return Borrowed Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "username",
+								"value": "test10",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":5,\n    \"is_return\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check borrow book with username student",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "test",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check book with username librarian",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "test10",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/borrowBook",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
